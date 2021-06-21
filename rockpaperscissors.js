@@ -41,4 +41,15 @@ if(userInput === "rock" || userInput === "paper" || userInput === "scissors"){
 
 const getComputerChoice =()=>{
   const randomNum = Math.floor(Math.random() * 2);
+
+  if(randomNum === 0){
+    return "rock";
+  }else if(randomNum ===1){
+    return "paper";
+  }else {
+    return "scissors";
+  }
 }
+
+//testing to see if the function created is working
+console.log(getComputerChoice())
