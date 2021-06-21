@@ -25,13 +25,14 @@
 //Inside getUserChoice(), write an if/else statement that makes sure the userInput is either 'rock', 'paper', or 'scissors'.
 //If it does, then return the userInput.
 //If not, use console.log to print an error message to the console.
-const getUserChoice = userInput => {
-userInput = userInput.toLowerCase();
-if(userInput === "rock" || userInput === "paper" || userInput === "scissors"){
-  return userInput;
-}else {
-  console.log("There was an error. Please ensure you are inputs are one of the following, rock, paper, or scissors. ");
-}
+const getUserChoice = userInput =>{
+  userInput = userInput.toLowerCase();
+
+  if(userInput === "rock" || userInput === "paper" || userInput === "scissors"){
+      return userInput
+  }else{
+    console.log("Error, please type: rock, paper, or scissors.")
+  }
 };
 //5/Now we need to have the computer make a choice.
 
@@ -39,15 +40,15 @@ if(userInput === "rock" || userInput === "paper" || userInput === "scissors"){
 //Inside its block, utilize Math.random() and Math.floor() to get a whole number between 0 and 2.
 //Then, depending on the number, return either 'rock', 'paper', or 'scissors'.
 
-const getComputerChoice =()=>{
-  const randomNum = Math.floor(Math.random() * 2);
+const getComputerChoice = ()=>{
+  const randomNum = Math.floor(Math.random() *3)
 
   if(randomNum === 0){
-    return "rock";
+    return "rock"
   }else if(randomNum ===1){
-    return "paper";
+    return "paper"
   }else {
-    return "scissors";
+    return "scissors"
   }
 }
 
@@ -70,28 +71,46 @@ const getComputerChoice =()=>{
 //If so, return a message that the computer won. If not, return a message that the user won.
 
 const determineWinner =(userChoice, computerChoice)=>{
-  userChoice = getUserChoice();
-  computerChoice = getComputerChoice();
-
   if(userChoice === computerChoice){
-    return "The game was a tie!";
-    if(computerChoice=== "paper"){
-      return "The computer has won the game!"
+    return "This game is a tie.";
+
+  }
+  if(userChoice === "rock"){
+    if(computerChoice === "paper"){
+      return "Sorry, the computer won the game!"
     }else{
-      return "The user has won the game"
+      return "Congratulation, you won the game!"
     }
-  }if(userChoice === "paper"){
+
+  }
+  if(userChoice === "paper"){
     if(computerChoice === "scissors"){
-      return "The computer has won the game!"
+      return "Sorry, the computer won the game!"
     }else{
-      return "The user has won the game!"
-    }
-  }if(userChoice === "scissors"){
-    if(computerChoice === "rock"){
-      return "The computer has won the game!"
-    }else{
-      return "The user has won the game!"
+       return "Congratulation, you won the game!"
     }
   }
-
+  if(userChoice === "scissors"){
+    if(computerChoice === "rock"){
+        return "Sorry, the computer won the game!"
+    }else{
+       return "Congratulation, you won the game!"
+    }
+  }
 }
+
+// console.log(determineWinner("rock","scissors"))
+// console.log(determineWinner("rock","rock"))
+// console.log(determineWinner("paper","scissors"))
+// console.log(determineWinner("paper","rock"))
+
+const playGame = ()=>{
+const userChoice = getUserChoice("rock");
+const computerChoice = getComputerChoice();
+
+console.log(`You threw: ${userChoice}`);
+console.log(`The computer threw: ${computerChoice}`)
+console.log(determineWinner(userChoice, computerChoice));
+}
+
+playGame()
